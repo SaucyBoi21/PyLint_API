@@ -1,7 +1,8 @@
 const express = require('express')
 
-const app = ex
-'app.use(express.json)'
+const app = express()
+app.use(express.json())
+
 PORT = 3000
 
 app.listen(

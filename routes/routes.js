@@ -5,5 +5,15 @@ const router = express.Router()
 module.exports = router
 
 router.post('/post', (req, res) => {
-    res.send('Post API')
+    
+    const test_filepath = `../python_files/test.py`
+    const { filename } = req.body
+    const { file } = req.body
+
+
+    res.status(200).send({
+        filename,
+        file 
+    })
+
 })
