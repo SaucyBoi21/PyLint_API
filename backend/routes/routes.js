@@ -16,6 +16,7 @@ router.post('/upload', upload.single('file'), (req, res) => {
     })
 })
 
-router.get('/get/:fileID', (req, res) => {
+router.get('/file')
+router.get('/output', (req, res) => {
     data = req.body    
 })
