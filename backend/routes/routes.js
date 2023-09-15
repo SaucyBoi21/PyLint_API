@@ -1,4 +1,5 @@
-const {upload} = require("../multer/multer_config") 
+const {upload} = require("../multer/multer_config")
+const npm = require('npm-commands') 
 const express = require('express')
 const router = express.Router()
 
@@ -16,7 +17,11 @@ router.post('/upload', upload.single('file'), (req, res) => {
     })
 })
 
-router.get('/file')
-router.get('/output', (req, res) => {
-    data = req.body    
+router.get('/file', (req, res) => {
+    data = req.body
+    filename = data.filename
+    res.json({
+        "filename": filename
+        
+    })
 })
