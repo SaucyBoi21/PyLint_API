@@ -21,10 +21,11 @@ router.get('/output', (req, res) => {
     data = req.body
     filename = data.filename
 
-    pylintCommand = `npm exec npm`
+    //pylintCommand = `npm exec pylint --help`
+    pylintCommand = `npm exec pylint ./uploads/sample3.py`
 
     exec(pylintCommand, (error, stdout, stderr) => {
-        if (error) {
+        /* if (error) {
             res.status(500).json({
                 error: `Error: ${error.message}`
             })
@@ -32,15 +33,16 @@ router.get('/output', (req, res) => {
 
         if (stderr) {
             res.status(400).json({
-                error: 'No file found'
+                error: `Standard Error: ${stderr}`
             })
         }
 
-        var output = stdout;
+        else { */
+            res.status(200).json({
+                filename: filename,
+                output: `Output: ${stdout}`
+            })
+        //}
 
-        res.json({
-        "filename": filename,
-        "output": output
-        })
     })
 })
