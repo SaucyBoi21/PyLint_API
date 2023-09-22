@@ -46,3 +46,8 @@ router.get('/output', (req, res) => {
 
     })
 })
+
+//status codes & logger
+//promisified version of exec
+//pylint config
+//pylint --output (change from text to other data type)
