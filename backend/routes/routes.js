@@ -22,27 +22,27 @@ router.get('/output', (req, res) => {
     filename = data.filename
 
     //pylintCommand = `npm exec pylint --help`
-    pylintCommand = `npm exec pylint ./uploads/sample3.py`
+    pylintCommand = `npm exec pylint ./uploads/${filename}`
 
     exec(pylintCommand, (error, stdout, stderr) => {
-        /* if (error) {
-            res.status(500).json({
-                error: `Error: ${error.message}`
+
+        /*if (stderr) {
+            res.status(400).send({
+                error: `Error: ${stderr}`
             })
         }
-
-        if (stderr) {
-            res.status(400).json({
-                error: `Standard Error: ${stderr}`
+        else if (error) {
+            res.status(500).send({
+                error: `Error: ${error}`
             })
-        }
-
-        else { */
-            res.status(200).json({
+        }*/
+        //else if (stdout) {
+           res.status(200).send({
                 filename: filename,
                 output: `Output: ${stdout}`
-            })
+            }) 
         //}
+
 
     })
 })
