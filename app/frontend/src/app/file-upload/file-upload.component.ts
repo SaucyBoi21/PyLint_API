@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent {
-
 }
