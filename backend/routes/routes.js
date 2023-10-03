@@ -1,6 +1,7 @@
 const {upload} = require("../multer/multer_config")
 const {exec} = require('child_process')
 const {StatusCodes} = require('http-status-codes')
+const CustomError = require('../utils/customerror')
 const express = require('express')
 const fs = require('fs')
 const router = express.Router()
@@ -9,20 +10,19 @@ const router = express.Router()
 module.exports = router
 
 router.post('/upload', upload.single('file'), (req, res) => {
-    if (!req.file) {
-        return res.status(StatusCodes.NOT_FOUND).json({error: 'No file uploaded'})
-    }
-    res.json({
+    res.status(StatusCodes.OK).json({
         message: 'File Uploaded successfully', 
         fileName: req.file.filename
     })
+    
 })
 
-    router.get('/output', async (req, res, next) => {
-    data = await req.body
-    filename = await data.filename
+router.get('/output', (req, res, next) => {
 
-    pylintCommand = `npm exec pylint ./uploads/${filename} --output-format json`
+    data = req.body
+    filename = data.filename
+
+    pylintCommand = `npm exec pylint ./uploads/${filename}`
 
     exec(pylintCommand, (error, stdout, stderr) => {
 
@@ -35,6 +35,11 @@ router.post('/upload', upload.single('file'), (req, res) => {
     })
 })
 
+router.get('/test', (req, res) => {
+    res.status(StatusCodes.OK).json({
+        output: "it works!"
+    })
+})
 //status codes & logger
 //promisified version of exec
 //pylint config
