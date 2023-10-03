@@ -1,5 +1,6 @@
 const {upload} = require("../multer/multer_config")
 const {exec} = require('child_process')
+const {StatusCodes} = require('http-status-codes')
 const express = require('express')
 const fs = require('fs')
 const router = express.Router()
@@ -9,7 +10,7 @@ module.exports = router
 
 router.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
-        return res.status(400).json({error: 'No file uploaded'})
+        return res.status(StatusCodes.NOT_FOUND).json({error: 'No file uploaded'})
     }
     res.json({
         message: 'File Uploaded successfully', 
@@ -17,31 +18,18 @@ router.post('/upload', upload.single('file'), (req, res) => {
     })
 })
 
-router.get('/output', (req, res) => {
-    data = req.body
-    filename = data.filename
+    router.get('/output', async (req, res, next) => {
+    data = await req.body
+    filename = await data.filename
 
-    //pylintCommand = `npm exec pylint --help`
     pylintCommand = `npm exec pylint ./uploads/${filename} --output-format json`
 
     exec(pylintCommand, (error, stdout, stderr) => {
 
-        /*if (stderr) {
-            res.status(400).send({
-                error: `Error: ${stderr}`
-            })
-        }
-        else if (error) {
-            res.status(500).send({
-                error: `Error: ${error}`
-            })
-        }*/
-        //else if (stdout) {
-           res.status(200).send({
-                filename: filename,
-                output: `Output: ${stdout}`
-            }) 
-        //}
+        res.status(StatusCodes.OK).send({
+            filename: filename,
+            output: `Output: ${stdout}`
+        }) 
 
 
     })
