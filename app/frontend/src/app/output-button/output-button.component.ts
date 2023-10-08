@@ -14,6 +14,6 @@ export class OutputButtonComponent {
   output: any;
 
   getPylintOutput() {
-    this.output = JSON.stringify(this.http.get(this.TEST_URL + '/test'))
+    this.output = this.http.get(this.TEST_URL + '/test')
   }
 }
