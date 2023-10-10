@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { OutputService } from '../output.service';
+import { Observable } from 'rxjs';
+import { PylintOutput } from '../pylint-output';
 
 @Component({
   selector: 'app-output-button',
@@ -8,12 +11,13 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 })
 export class OutputButtonComponent {
   readonly TEST_URL = 'http://localhost:3000/api'
+  output: Observable<PylintOutput> = new Observable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private outputService: OutputService) {}
 
-  output: any;
-
-  getPylintOutput() {
-    this.output = this.http.get(this.TEST_URL + '/test')
+  getPylintOutput(): void {
+    this.output = this.outputService.getPylintOutput()
   }
+
+
 }
