@@ -36,8 +36,9 @@ router.get('/output', (req, res, next) => {
 })
 
 router.get('/test', (req, res) => {
-    res.status(StatusCodes.OK).json({
-        output: "it works!"
+    res.status(StatusCodes.OK).send({
+        filename: "test file",
+        output: "test output"
     })
 })
 //status codes & logger

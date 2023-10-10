@@ -1,4 +1,4 @@
 export interface PylintOutput {
-    //filename: string
-    output: string
+    filename?: string
+    output?: string
 }

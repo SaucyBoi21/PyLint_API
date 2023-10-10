@@ -9,14 +9,19 @@ import { PylintOutput } from '../pylint-output';
   templateUrl: './output-button.component.html',
   styleUrls: ['./output-button.component.css']
 })
-export class OutputButtonComponent {
-  readonly TEST_URL = 'http://localhost:3000/api'
-  output: Observable<PylintOutput> = new Observable();
+export class OutputButtonComponent implements OnInit{
+  readonly TEST_URL = 'http://localhost:300/api'
+  output$: Observable<PylintOutput> = new Observable();
+  //output$: any
 
   constructor(private outputService: OutputService) {}
 
+  ngOnInit(): void {
+      
+  }
+
   getPylintOutput(): void {
-    this.output = this.outputService.getPylintOutput()
+    this.output$ = this.outputService.getPylintOutput()
   }
 
 

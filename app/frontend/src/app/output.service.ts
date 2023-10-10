@@ -10,10 +10,12 @@ import { PylintOutput } from './pylint-output';
 export class OutputService {
 
   private url = "http://localhost:3000/api"
+  //private output$: Observable<PylintOutput> = new Observable()
 
-  constructor(private http:HttpClient) { }
+  constructor(private httpClient:HttpClient) { }
 
-  getPylintOutput(): Observable<PylintOutput> {
-    return this.http.get<PylintOutput>(`${this.url}/test`)
+  getPylintOutput(): Observable<PylintOutput>{
+    //return "test"
+    return this.httpClient.get<PylintOutput>(`${this.url}/test`)
   }
 }
