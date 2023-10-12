@@ -22,6 +22,7 @@ export class OutputButtonComponent implements OnInit{
 
   getPylintOutput(): void {
     this.output$ = this.outputService.getPylintOutput()
+    //console.log(JSON.stringify(this.output$))
   }
 
 

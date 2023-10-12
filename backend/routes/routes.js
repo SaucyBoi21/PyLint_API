@@ -10,9 +10,10 @@ const router = express.Router()
 module.exports = router
 
 router.post('/upload', upload.single('file'), (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200")
     res.status(StatusCodes.OK).json({
         message: 'File Uploaded successfully', 
-        fileName: req.file.filename
+        filename: req.file.filename
     })
     
 })
@@ -36,6 +37,7 @@ router.get('/output', (req, res, next) => {
 })
 
 router.get('/test', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200")
     res.status(StatusCodes.OK).send({
         filename: "test file",
         output: "test output"

@@ -2,6 +2,7 @@ const routes = require('./routes/routes')
 const multer_config = require('./multer/multer_config')
 const express = require("express")
 const { StatusCodes } = require('http-status-codes')
+const cors = require("cors")
 const app = express()
 const port = 3000
 
@@ -15,6 +16,12 @@ app.use((err, req, res, next) => {
         message: err.message
     })
 })
+
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+    optionsSuccessStatus:200
+}))
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`)
