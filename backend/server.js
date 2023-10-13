@@ -18,9 +18,10 @@ app.use((err, req, res, next) => {
 })
 
 app.use(cors({
-    origin: 'http://localhost:4200',
+    //origin: 'http://localhost:4200',
+    //methods: ['GET', 'POST'],
     credentials: true,
-    optionsSuccessStatus:200
+    allowedHeaders: ['X-Requested With, content-type'] 
 }))
 
 app.listen(port, () => {

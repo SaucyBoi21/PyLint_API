@@ -15,7 +15,11 @@ export class FileUploadService {
   onFileSelected(event:any) {
     const file:File = event.target.files[0]
 
-    return this.httpClient.post(`${this.url}/upload`, file)
+    
+    const output = this.httpClient.post(`${this.url}/upload`, file)
+    console.log(output)
+    return output
+    
     
   }
 }
