@@ -16,6 +16,6 @@ export class OutputService {
 
   getPylintOutput(): Observable<PylintOutput>{
     //return "test"
-    return this.httpClient.get<PylintOutput>(`${this.url}/test`)
+    return this.httpClient.get<PylintOutput>(`/api/output`)
   }
 }

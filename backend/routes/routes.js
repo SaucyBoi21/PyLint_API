@@ -10,9 +10,7 @@ const router = express.Router()
 
 module.exports = router
 
-router.post('/upload', cors(), upload.single('file'), (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin: *")
-    res.setHeader("Access-Control-Allow-Headers: X-Requested-With, content-type")
+router.post('/upload', upload.single('file'), (req, res) => {
     res.status(StatusCodes.OK).json({
         message: 'File Uploaded successfully', 
         filename: req.file.filename
@@ -25,13 +23,15 @@ router.get('/output', (req, res, next) => {
     data = req.body
     filename = data.filename
 
-    pylintCommand = `npm exec pylint ./uploads/${filename}`
+    pylintCommand = `npm exec pylint ./uploads/${filename} `
 
     exec(pylintCommand, (error, stdout, stderr) => {
 
+        output = stdout
+
         res.status(StatusCodes.OK).send({
             filename: filename,
-            output: `Output: ${stdout}`
+            response: output
         }) 
 
 
@@ -39,7 +39,6 @@ router.get('/output', (req, res, next) => {
 })
 
 router.get('/test', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200")
     res.status(StatusCodes.OK).send({
         filename: "test file",
         output: "test output"

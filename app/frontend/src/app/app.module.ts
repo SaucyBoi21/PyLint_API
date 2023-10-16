@@ -13,7 +13,7 @@ import { OutputDisplayComponent } from './output-display/output-display.componen
     AppComponent,
     FileUploadComponent,
     OutputButtonComponent,
-    OutputDisplayComponent
+    OutputDisplayComponent,
   ],
   imports: [
     BrowserModule,

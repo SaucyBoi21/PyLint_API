@@ -17,12 +17,7 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.use(cors({
-    //origin: 'http://localhost:4200',
-    //methods: ['GET', 'POST'],
-    credentials: true,
-    allowedHeaders: ['X-Requested With, content-type'] 
-}))
+app.use(cors())
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`)
