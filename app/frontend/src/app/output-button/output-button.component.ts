@@ -10,7 +10,7 @@ import { PylintOutput } from '../pylint-output';
   styleUrls: ['./output-button.component.css']
 })
 export class OutputButtonComponent implements OnInit{
-  readonly TEST_URL = 'http://localhost:300/api'
+  readonly TEST_URL = 'http://localhost:3000/api'
   output$: Observable<PylintOutput> = new Observable();
   //output$: any
 

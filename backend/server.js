@@ -1,4 +1,5 @@
 const routes = require('./routes/routes')
+const fileUpload = require('express-fileupload')
 const multer_config = require('./multer/multer_config')
 const express = require("express")
 const { StatusCodes } = require('http-status-codes')
@@ -18,6 +19,7 @@ app.use((err, req, res, next) => {
 })
 
 app.use(cors())
+app.use(fileUpload())
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`)

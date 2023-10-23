@@ -22,9 +22,10 @@ export class FileUploadService {
       this.fileName = file.name
       const formData = new FormData()
       formData.append("thumbnail", file)
-      this.output =  this.httpClient.post(`/api/upload`, formData)
+      this.output = this.httpClient.post(`/api/upload`, formData)
     }
-
+    
+    console.log(this.output)
     return this.output
     
 
