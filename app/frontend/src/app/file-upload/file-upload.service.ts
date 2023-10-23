@@ -9,11 +9,11 @@ import { OutputMessage } from '../output-message';
 })
 export class FileUploadService {
   private url = 'http://localhost:3000/api'
+  output$:any
 
   constructor(private httpClient: HttpClient) { }
 
   fileName = ''
-  output:any
 
   onFileSelected(event:any) {
     const file:File = event.target.files[0]
@@ -22,11 +22,12 @@ export class FileUploadService {
       this.fileName = file.name
       const formData = new FormData()
       formData.append("thumbnail", file)
-      this.output = this.httpClient.post(`/api/upload`, formData)
+      this.output$ = this.httpClient.post(`/api/upload`, formData)
+      this.output$.subscribe()
     }
     
-    console.log(this.output)
-    return this.output
+    console.log(this.output$)
+    return this.output$
     
 
 
