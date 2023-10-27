@@ -1,10 +1,7 @@
 const {upload} = require("../multer/multer_config")
 const {exec} = require('child_process')
 const {StatusCodes} = require('http-status-codes')
-const CustomError = require('../utils/customerror')
 const express = require('express')
-const cors = require('cors')
-const fs = require('fs')
 const router = express.Router()
 
 
