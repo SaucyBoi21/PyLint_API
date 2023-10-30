@@ -25,7 +25,7 @@ export class UserInputComponent {
   onSubmit(): void {
     this.input = this.inputForm.value
     this.inputForm.reset()
-    //console.log(this.input)
+    console.log(this.input)
   }
 
 }
