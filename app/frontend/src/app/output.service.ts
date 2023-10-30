@@ -14,8 +14,8 @@ export class OutputService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getPylintOutput(): Observable<PylintOutput>{
+  getPylintOutput(filename$:string): Observable<PylintOutput>{
     //return "test"
-    return this.httpClient.get<PylintOutput>(`/api/output`)
+    return this.httpClient.get<PylintOutput>(`/api/output`, filename$)
   }
 }

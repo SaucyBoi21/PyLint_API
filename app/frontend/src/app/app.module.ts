@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { OutputButtonComponent } from './output-button/output-button.component';
 import { OutputDisplayComponent } from './output-display/output-display.component';
+import { UserInputComponent } from './user-input/user-input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,14 @@ import { OutputDisplayComponent } from './output-display/output-display.componen
     FileUploadComponent,
     OutputButtonComponent,
     OutputDisplayComponent,
+    UserInputComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

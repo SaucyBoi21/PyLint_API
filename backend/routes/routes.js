@@ -12,7 +12,7 @@ module.exports = router
 
 router.post('/upload', upload.single('file'), (req, res) => {
 
-    res.status(StatusCodes.OK).json({
+    res.status(StatusCodes.OK).send({
         message: 'File Uploaded successfully', 
         filename: req.file.filename
     })
