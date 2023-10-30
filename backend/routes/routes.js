@@ -24,7 +24,7 @@ router.get('/output', (req, res, next) => {
     data = req.body
     filename = data.filename
 
-    pylintCommand = `npm exec pylint ./uploads/${filename} `
+    pylintCommand = `npm exec pylint ./uploads/test.py`
 
     exec(pylintCommand, (error, stdout, stderr) => {
 

@@ -14,8 +14,12 @@ export class OutputService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getPylintOutput(filename$:string): Observable<PylintOutput>{
-    //return "test"
-    return this.httpClient.get<PylintOutput>(`/api/output`, filename$)
+  getPylintOutput(filename:string): Observable<PylintOutput> {
+    const url = `/api/output`
+    const output$ = this.httpClient.get<PylintOutput>(
+      url
+    )
+    output$.subscribe()
+    return output$
   }
 }
