@@ -22,7 +22,7 @@ export class FileUploadService {
       this.fileName = file.name
       const formData = new FormData()
       
-      formData.append("uploads[]",file, file.name)
+      formData.append("recfile",file, file.name)
       this.output$ = this.httpClient.post(`/api/upload`, formData)
       this.output$.subscribe()
     }

@@ -1,2 +1,2 @@
 <input type="file" class="file-upload" (change)="displayOutput($event)">
-<p>{{ (upload$ | async) }}</p>
+<p>{{ (upload$ | async)?.message }}</p>

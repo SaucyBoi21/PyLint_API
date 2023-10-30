@@ -12,7 +12,6 @@ import { UserInputComponent } from '../user-input/user-input.component';
 })
 export class OutputButtonComponent implements OnInit, AfterViewInit{
   readonly TEST_URL = 'http://localhost:3000/api'
-  filename = ""
   output$: Observable<PylintOutput> = new Observable();
   //output$: any
 
@@ -25,13 +24,15 @@ export class OutputButtonComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
       
   }
-
+  
+  filename:string
   ngAfterViewInit(): void {
       this.filename = this.userInputComponent.input
   }
 
   getPylintOutput(): void {
     this.output$ = this.outputService.getPylintOutput(this.filename)
+    console.log(this.filename)
     //console.log(JSON.stringify(this.output$))
   }
 

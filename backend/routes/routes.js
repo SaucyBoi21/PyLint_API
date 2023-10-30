@@ -10,21 +10,23 @@ const router = express.Router()
 
 module.exports = router
 
-router.post('/upload', upload.single('file'), (req, res) => {
+router.post('/upload', upload.single('recfile'), (req, res) => {
 
+    /*if (err) {
+        console.log(err)
+    }*/
     res.status(StatusCodes.OK).send({
-        message: 'File Uploaded successfully', 
+        message: `${req.file.filename} uploaded successfully!`, 
         filename: req.file.filename
     })
     
 })
 
-router.get('/output', (req, res, next) => {
+router.get('/output/:filename', (req, res, next) => {
 
-    data = req.body
-    filename = data.filename
+    filename = req.params.filename
 
-    pylintCommand = `npm exec pylint ./uploads/test.py`
+    pylintCommand = `npm exec pylint ./uploads/${filename}.py`
 
     exec(pylintCommand, (error, stdout, stderr) => {
 
