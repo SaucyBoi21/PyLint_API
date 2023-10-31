@@ -11,6 +11,8 @@ import { Output, EventEmitter } from '@angular/core';
 
 export class UserInputComponent {
 
+  @Output() newUserEvent = new EventEmitter<string>()
+
   constructor (
     private readUserInputService: ReadUserInputService,
     private formBuilder: FormBuilder
@@ -22,10 +24,14 @@ export class UserInputComponent {
     input: ''
   })
 
+  sendOutput(output:any) {
+    this.newUserEvent.emit(output)
+  }
+
   onSubmit(): void {
-    this.input = this.inputForm.value
+    this.input = this.inputForm.value.input
+    this.sendOutput(this.input)
     this.inputForm.reset()
-    console.log(this.input)
   }
 
 }

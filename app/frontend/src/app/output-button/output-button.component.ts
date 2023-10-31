@@ -10,13 +10,12 @@ import { UserInputComponent } from '../user-input/user-input.component';
   templateUrl: './output-button.component.html',
   styleUrls: ['./output-button.component.css']
 })
-export class OutputButtonComponent implements OnInit, AfterViewInit{
+export class OutputButtonComponent implements OnInit {
   readonly TEST_URL = 'http://localhost:3000/api'
   output$: Observable<PylintOutput> = new Observable();
   //output$: any
 
-  @ViewChild(UserInputComponent) 
-  userInputComponent: UserInputComponent
+  @ViewChild(UserInputComponent) userInputComponent: UserInputComponent
 
 
   constructor(private outputService: OutputService) {}
@@ -24,10 +23,11 @@ export class OutputButtonComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
       
   }
-  
+
   filename:string
-  ngAfterViewInit(): void {
-      this.filename = this.userInputComponent.input
+
+  recieveOutput($event:any){
+    this.filename = $event
   }
 
   getPylintOutput(): void {
