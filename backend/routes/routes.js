@@ -26,7 +26,7 @@ router.get('/output/:filename', (req, res, next) => {
 
     filename = req.params.filename
 
-    pylintCommand = `npm exec pylint ./uploads/${filename}.py`
+    pylintCommand = `npm exec pylint ./uploads/${filename}.py -- --output-format=json`
 
     exec(pylintCommand, (error, stdout, stderr) => {
 

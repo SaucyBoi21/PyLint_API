@@ -17,7 +17,6 @@ export class OutputButtonComponent implements OnInit {
 
   @ViewChild(UserInputComponent) userInputComponent: UserInputComponent
 
-
   constructor(private outputService: OutputService) {}
 
   ngOnInit(): void {
