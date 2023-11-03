@@ -31,7 +31,7 @@ export class OutputButtonComponent implements OnInit {
 
   getPylintOutput(): void {
     this.output$ = this.outputService.getPylintOutput(this.filename)
-    console.log(this.filename)
+    console.log(this.output$)
     //console.log(JSON.stringify(this.output$))
   }
 
