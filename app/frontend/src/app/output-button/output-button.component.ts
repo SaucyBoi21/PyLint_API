@@ -30,7 +30,12 @@ export class OutputButtonComponent implements OnInit {
   }
 
   getPylintOutput(): void {
-    this.output$ = this.outputService.getPylintOutput(this.filename)
+    this.outputService.getPylintOutput(this.filename).subscribe(
+      data => {
+        console.log(data.response)
+      } 
+    )
+    
     console.log(this.output$)
     //console.log(JSON.stringify(this.output$))
   }

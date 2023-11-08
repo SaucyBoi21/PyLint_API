@@ -1,4 +1,4 @@
 export interface PylintOutput {
-    filename?: string
-    response?: string
+    filename: string
+    response: string
 }
