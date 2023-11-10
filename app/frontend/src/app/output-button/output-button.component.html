@@ -1,3 +1,3 @@
-<app-user-input (newUserEvent)="recieveOutput($event)"></app-user-input>
-<button (click)="getPylintOutput()">GetOutput</button>
-<p>{{ (output$ | async)?.response }}</p>
+<!app-user-input (newUserEvent)="recieveOutput($event)"><!/app-user-input>
+<button (click)="getPylintOutput()">Analyze File</button>
+<app-pylint-output></app-pylint-output>
