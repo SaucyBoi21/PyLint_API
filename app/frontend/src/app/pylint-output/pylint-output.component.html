@@ -1,1 +1,39 @@
-<p>pylint-output works!</p>
+<table mat-table [dataSource]="response">
+    <ng-container matColumnDef="message-id">
+        <th mat-header-cell *matHeaderCellDef> Message Id </th>
+        <td mat-cell *matCellDef="let user"> {{user.message_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+        <th mat-header-cell *matHeaderCellDef> Message </th>
+        <td mat-cell *matCellDef="let user"> {{user.message}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let user"> {{user.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="line">
+        <th mat-header-cell *matHeaderCellDef> Line </th>
+        <td mat-cell *matCellDef="let user"> {{user.line}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="column">
+        <th mat-header-cell *matHeaderCellDef> Column </th>
+        <td mat-cell *matCellDef="let user"> {{user.column}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endLine">
+        <th mat-header-cell *matHeaderCellDef> End Line </th>
+        <td mat-cell *matCellDef="let user"> {{user.endLine}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endColumn">
+        <th mat-header-cell *matHeaderCellDef> End Column </th>
+        <td mat-cell *matCellDef="let user"> {{user.endColumn}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+</table>

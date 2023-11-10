@@ -4,6 +4,7 @@ import { OutputService } from '../output.service';
 import { Observable } from 'rxjs';
 import { PylintOutput } from '../pylint-output';
 import { UserInputComponent } from '../user-input/user-input.component';
+import { PylintResponse } from '../pylint-response';
 
 @Component({
   selector: 'app-output-button',
@@ -13,7 +14,7 @@ import { UserInputComponent } from '../user-input/user-input.component';
 export class OutputButtonComponent implements OnInit {
   readonly TEST_URL = 'http://localhost:3000/api'
   output$: Observable<PylintOutput> = new Observable();
-  //output$: any
+  data$: any
 
   @ViewChild(UserInputComponent) userInputComponent: UserInputComponent
 
@@ -23,21 +24,15 @@ export class OutputButtonComponent implements OnInit {
       
   }
 
-  filename:string
-
-  recieveOutput($event:any){
-    this.filename = $event
-  }
 
   getPylintOutput(): void {
     this.outputService.getPylintOutput("test").subscribe(
       data => {
         console.log(data.response)
-      } 
+        this.data$ = JSON.parse(data.response)
+      }
     )
     
-    console.log(this.output$)
-    //console.log(JSON.stringify(this.output$))
   }
 
 

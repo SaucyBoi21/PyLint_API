@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-pylint-output',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pylint-output.component.css']
 })
 export class PylintOutputComponent {
+  @Input() response:any
 
+  displayedColumns: string[] = ['message-id', 'message', 'type', 'line', 'column', 'endLine', 'endColumn']
 }
