@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pylint-output',
@@ -10,4 +11,6 @@ export class PylintOutputComponent {
   @Input() response:any
 
   displayedColumns: string[] = ['message-id', 'message', 'type', 'line', 'column', 'endLine', 'endColumn']
+
+  
 }

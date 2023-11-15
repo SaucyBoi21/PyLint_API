@@ -41,6 +41,16 @@ router.get('/output/:filename', (req, res, next) => {
     })
 })
 
+router.delete('/remove/:filename', (req, res) => {
+    filename = req.params.filename
+    fs.unlink(`./../uploads/${filename}`, (err) => {
+        if (err) throw err
+    })
+    res.status(StatusCodes.OK).send({
+        message: `${filename} deleted successfully`
+    })
+})
+
 router.get('/test', (req, res) => {
     res.status(StatusCodes.OK).send({
         filename: "test file",
