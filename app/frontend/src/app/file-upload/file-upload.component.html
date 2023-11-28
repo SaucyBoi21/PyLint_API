@@ -1,2 +1,7 @@
-<input type="file" class="file-upload" (change)="displayOutput($event)">
+<label for="file" class="drop-container" id="dropcontainer">
+    <span class="drop-title">Drop files here</span>
+    or
+    <input type="file" class="file-upload" (change)="displayOutput($event)">
+</label>
+
 <p>{{ (upload$ | async)?.message }}</p>

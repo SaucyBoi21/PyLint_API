@@ -1,3 +1,3 @@
 <!app-user-input (newUserEvent)="recieveOutput($event)"><!/app-user-input>
-<button (click)="getPylintOutput()">Analyze File</button>
+<button class="file-analyze" (click)="getPylintOutput()">Analyze File</button>
 <app-pylint-output [response]="data$"></app-pylint-output>

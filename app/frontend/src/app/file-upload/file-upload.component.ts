@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FileUploadService } from './file-upload.service';
 import { Observable } from 'rxjs';
 import { OutputMessage } from '../output-message';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-file-upload',
@@ -14,6 +15,8 @@ export class FileUploadComponent {
   upload$ : Observable<OutputMessage> = new Observable()
 
   constructor (private fileUploadService : FileUploadService) {}
+
+  
 
   displayOutput(event:Event) : void {
     this.upload$ = this.fileUploadService.onFileSelected(event)
